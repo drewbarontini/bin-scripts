@@ -6,13 +6,19 @@
 #
 # ****************************************************
 
-state=`osascript -e 'tell application "Spotify" to player state as string'`;
+running=`osascript -e 'application "Spotify" is running'`;
 
-if [ $state = "playing" ]; then
+if [ $running == "true" ]; then
 
-  artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-  track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+  state=`osascript -e 'tell application "Spotify" to player state as string'`;
 
-  echo -e "$track - $artist";
+  if [ $state = "playing" ]; then
+
+    artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
+    track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+
+    echo -e "$track - $artist";
+
+  fi
 
 fi
