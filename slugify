@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# ****************************************************
+#
+#   Slugify
+#   -> Convert string into a slug title
+#
+# ****************************************************
+
+def slugify( string )
+  string
+    .downcase
+    .strip
+    .gsub( ' ', '-' )
+    .gsub( /[^\w-]/, '' )
+end
+
+system "echo #{ slugify( ARGV[0] ) } | pbcopy"
