@@ -10,7 +10,7 @@
 #   Variables
 # ----------------------------------------------------
 
-@cli_directory    = ENV['HOME'] + '/.npm/sass-lint'
+@cli_directory    = "#{ ENV['HOME'] }/.npm/sass-lint"
 @config_file      = '.sass-lint.yml'
 @config_file_path = "https://raw.githubusercontent.com/drewbarontini/noise/master/#{ @config_file }"
 
