@@ -8,25 +8,46 @@
 #   Usage
 # ----------------------------------------------------
 #
-#  `gh`            - opens the root project page
-#  `gh issues`     - opens the issues page
-#  `gh issue`      - opens the new issue page
-#  `gh milestones` - opens the milestones page
-#  `gh pulls`      - opens the pulls page
-#  `gh pr`         - opens the pull request for the current branch
-#  `gh commits`    - opens the commits for the current branch
-#  `gh branches`   - opens the branches page
-#  `gh pulse`      - opens the pulse page
+#  `gh`              - opens the root project page
+#  `gh branches`     - opens the branches page
+#  `gh commits`      - opens the commits for the current branch
+#  `gh help`         - outputs the help message
+#  `gh home`         - opens the GitHub home page
+#  `gh issue`        - opens the new issue page
+#  `gh issues`       - opens the issues page
+#  `gh issues -m`    - opens the issues page with your assigned issues
+#  `gh issues -m -a` - opens the issues page with all your issues
+#  `gh milestones`   - opens the milestones page
+#  `gh pr`           - opens the pull request for the current branch
+#  `gh pulls`        - opens the pulls page
+#  `gh pulls -m`     - opens the pulls page with your assigned Pull Requests
+#  `gh pulls -m -a`  - opens the pulls page with all your Pull Requests
+#  `gh pulse`        - opens the pulse page
 #
 # ****************************************************
+
+# ----------------------------------------------------
+#   Errors
+# ----------------------------------------------------
 
 set -o errexit
 set -o nounset
 set -o pipefail
 
 # ----------------------------------------------------
+#   Config
+# ----------------------------------------------------
+
+GITHUB_URL='https://github.com'
+GITHUB_USERNAME='drewbarontini'
+
+# ----------------------------------------------------
 #   Functions
 # ----------------------------------------------------
+
+join() {
+ local IFS="$1"; shift; echo "$*";
+}
 
 remote_url() {
   git remote -v | grep "^$1" | head -1 | grep -o 'github.com[/:]\S\+'
@@ -56,45 +77,82 @@ if (( "$#" == 0 )); then
 
 else
 
-  case "$1" in
+  case "$*" in
 
-    'issues')
-      open "$url/issues"
-      ;;
-
-    'issue')
-      open "$url/issues/new"
-      ;;
-
-    'milestones')
-      open "$url/milestones"
-      ;;
-
-    'pulls')
-      open "$url/pulls"
-      ;;
-
-    'pr')
-      open "https://${advanced_url/://}/pull/${branch//\//%2F}"
+    'branches')
+      open "$url/branches"
       ;;
 
     'commits')
       open "$url/commits/$branch"
       ;;
 
-    'branches')
-      open "$url/branches"
+    'help')
+      echo
+      echo 'Opens GitHub URLs'
+      echo
+      echo 'Usage: gh [options]'
+      echo
+      echo 'Available commands are:'
+      echo '  gh               opens the root project page'
+      echo '  gh branches      opens the branches page'
+      echo '  gh commits       opens the commits for the current branch'
+      echo '  gh help          outputs the help message'
+      echo '  gh home          opens the GitHub home page'
+      echo '  gh issue         opens the new issue page'
+      echo '  gh issues        opens the issues page'
+      echo '  gh issues -m     opens the issues page with your assigned issues'
+      echo '  gh issues -m -a  opens the issues page with all your issues'
+      echo '  gh milestones    opens the milestones page'
+      echo '  gh pr            opens the pull request for the current branch'
+      echo '  gh pulls         opens the pulls page'
+      echo '  gh pulls -m      opens the pulls page with your assigned Pull Requests'
+      echo '  gh pulls -m -a   opens the pulls page with all your Pull Requests'
+      echo '  gh pulse         opens the pulse page'
+      ;;
+
+    'home')
+      open 'https://github.com'
+      ;;
+
+    'issue')
+      open "$url/issues/new"
+      ;;
+
+    'issues')
+      open "$url/issues"
+      ;;
+
+    'issues -m')
+      open "$url/issues/assigned/$GITHUB_USERNAME"
+      ;;
+
+    'issues -m -a')
+      open "$GITHUB_URL/issues"
+      ;;
+
+    'milestones')
+      open "$url/milestones"
+      ;;
+
+    'pr')
+      open "https://${advanced_url/://}/pull/${branch//\//%2F}"
+      ;;
+
+    'pulls')
+      open "$url/pulls"
+      ;;
+
+    'pulls -m')
+      open "$url/pulls/assigned/$GITHUB_USERNAME"
+      ;;
+
+    'pulls -m -a')
+      open "$GITHUB_URL/pulls"
       ;;
 
     'pulse')
       open "$url/pulse"
-      ;;
-
-    *)
-      echo
-      echo "Opens GitHub URLs"
-      echo
-      echo "Usage: gh <issues|issue|milestones|pulls|pr|commits|branches|pulse>"
       ;;
 
   esac
