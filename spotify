@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# ****************************************************
+# *************************************
 #
 #   Spotify
 #   -> Pulled from: https://github.com/hnarayanan/shpotify
 #
-# ****************************************************
+# *************************************
 
 running=`osascript -e 'application "Spotify" is running'`;
 

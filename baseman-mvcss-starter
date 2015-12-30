@@ -1,59 +1,39 @@
 #!/usr/bin/env bash
-# ****************************************************
+# *************************************
 #
 #   Baseman MVCSS Starter
 #   -> Creates an MVCSS starter application using drewbarontini/baseman
 #
-# ----------------------------------------------------
+# -------------------------------------
 #   Dependencies
-# ----------------------------------------------------
+# -------------------------------------
 #
 #  - bash-comment
 #  - download-zip
 #  - message
 #
-# ----------------------------------------------------
+# -------------------------------------
 #   Usage
-# ----------------------------------------------------
+# -------------------------------------
 #
 #  `baseman-mvcss-starter scratch` - creates a new project called 'scratch'
 #
-# ****************************************************
+# *************************************
 
 set -o errexit
 set -o nounset
 set -o pipefail
 
-# ----------------------------------------------------
+# -------------------------------------
 #   Variables
-# ----------------------------------------------------
+# -------------------------------------
 
 BASEMANURL='git@github.com:drewbarontini/baseman.git'
 
-# ----------------------------------------------------
+# -------------------------------------
 #   Main
-# ----------------------------------------------------
+# -------------------------------------
 
-echo
-bash-comment l 'MVCSS Starter Project'
-echo
-
-bash-comment m 'Cloning drewbarontini/baseman...'
-echo
-git clone $BASEMANURL $1
-cd $1
-
-echo
-bash-comment m 'Cleaning up repo...'
-echo
-message green 'Cleaned up repo!'
-rm CHANGELOG.md
-rm MIT-LICENSE
-
-echo
-bash-comment m 'Setting up Bower...'
-echo
-npm install -g bower
 bower install
 echo
 message green 'Bower is successfully set up!'

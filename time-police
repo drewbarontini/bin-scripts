@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# ****************************************************
+# *************************************
 #
 #   Timer Police
 #   -> A simple shell script for effective time management
 #      Credit: https://github.com/connermcd/gtd
 #
-# ****************************************************
+# *************************************
 
 set -e
 
