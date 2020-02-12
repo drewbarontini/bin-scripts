@@ -8,22 +8,22 @@
 #   Usage
 # -------------------------------------
 #
-#  `gh`              - opens the root project page
-#  `gh branches`     - opens the branches page
-#  `gh commits`      - opens the commits for the current branch
-#  `gh help`         - outputs the help message
-#  `gh home`         - opens the GitHub home page
-#  `gh issue`        - opens the new issue page
-#  `gh issues`       - opens the issues page
-#  `gh issues -m`    - opens the issues page with your assigned issues
-#  `gh issues -m -a` - opens the issues page with all your issues
-#  `gh milestones`   - opens the milestones page
-#  `gh pr`           - opens the pull request for the current branch
-#  `gh projects`     - opens the projects root page
-#  `gh pulls`        - opens the pulls page
-#  `gh pulls -m`     - opens the pulls page with your assigned Pull Requests
-#  `gh pulls -m -a`  - opens the pulls page with all your Pull Requests
-#  `gh pulse`        - opens the pulse page
+#  `_gh`              - opens the root project page
+#  `_gh branches`     - opens the branches page
+#  `_gh commits`      - opens the commits for the current branch
+#  `_gh help`         - outputs the help message
+#  `_gh home`         - opens the GitHub home page
+#  `_gh issue`        - opens the new issue page
+#  `_gh issues`       - opens the issues page
+#  `_gh issues -m`    - opens the issues page with your assigned issues
+#  `_gh issues -m -a` - opens the issues page with all your issues
+#  `_gh milestones`   - opens the milestones page
+#  `_gh pr`           - opens the pull request for the current branch
+#  `_gh projects`     - opens the projects root page
+#  `_gh pulls`        - opens the pulls page
+#  `_gh pulls -m`     - opens the pulls page with your assigned Pull Requests
+#  `_gh pulls -m -a`  - opens the pulls page with all your Pull Requests
+#  `_gh pulse`        - opens the pulse page
 #
 # *************************************
 
